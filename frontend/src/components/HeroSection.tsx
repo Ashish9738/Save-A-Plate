@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
 
 const HeroSection: React.FC = () => {
   return (
@@ -13,14 +12,6 @@ const HeroSection: React.FC = () => {
             Join our mission to reduce food waste and help those in need. 
             Every meal donated can make a difference in someone's life.
           </p>
-          <Button>Get Started</Button>
-        </div>
-        <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-          <img 
-            src="/api/placeholder/600/400" 
-            alt="Food Rescue Hero" 
-            className="rounded-lg"
-          />
         </div>
       </div>
     </section>
