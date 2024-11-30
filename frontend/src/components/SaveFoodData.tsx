@@ -22,18 +22,18 @@ const WhySaveSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gray-50 flex justify-center items-center">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12">Why Save Food?</h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 justify-center">
           {reasons.map((reason, index) => (
             <Card key={index} className="hover:shadow-lg transition-all">
-              <CardHeader className="flex items-center">
+              <CardHeader className="flex items-center justify-center">
                 {reason.icon}
-                <CardTitle className="ml-4">{reason.title}</CardTitle>
+                <CardTitle className="ml-4 text-center">{reason.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600">{reason.description}</p>
+                <p className="text-gray-600 text-center">{reason.description}</p>
               </CardContent>
             </Card>
           ))}

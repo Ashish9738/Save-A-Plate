@@ -34,6 +34,7 @@ const DonationForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       const response = await axios.post('http://127.0.0.1:8002/predict', {
         area: location
       });
@@ -41,6 +42,8 @@ const DonationForm: React.FC = () => {
       setPrediction(predictedPoints);
     } catch (error) {
       console.error('Error submitting the form:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -108,7 +111,9 @@ const DonationForm: React.FC = () => {
             disabled={!location}
             onClick={handleSubmit}
           >
-            Submit Donation
+            {
+              isLoading ? "Submitting" : "Submit"
+            }
           </Button>
         </div>
 
