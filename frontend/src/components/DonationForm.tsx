@@ -49,11 +49,11 @@ const DonationForm: React.FC = () => {
 
   const getPredictionMessage = (prediction: number) => {
     switch (prediction) {
-      case 1:
+      case 3:
         return { message: 'Low Poverty Density Region', sapCoins: 20 };
       case 2:
         return { message: 'Moderate Poverty Density Region', sapCoins: 50 };
-      case 3:
+      case 1:
         return { message: 'High Poverty Density Region', sapCoins: 100 };
       default:
         return { message: 'Unknown region', sapCoins: 0 };
