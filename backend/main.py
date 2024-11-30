@@ -6,6 +6,14 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 class InputData(BaseModel):
+    """
+    Input data structure for prediction requests.
+    
+    Attributes:
+        area (str): The name of the area.
+        age (int): The age of the individual (default is 30).
+        is_housed (bool): Whether the individual is housed (default is True).
+    """
     area: str
     age: int = 30
     is_housed: bool = True
@@ -13,14 +21,20 @@ class InputData(BaseModel):
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins, or restrict to specific ones
+    allow_origins=["*"],  
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all HTTP methods
-    allow_headers=["*"],  # Allow all headers
+    allow_methods=["*"],  
+    allow_headers=["*"],  
 )
 
 @app.get("/api/areas")
 def get_areas():
+    """
+    Endpoint to retrieve a list of predefined areas.
+    
+    Returns:
+        dict: A dictionary containing a list of area names.
+    """
     areas = [
         "Jayanagar", "Rajajinagar", "Koramangala", "Whitefield", 
         "Indiranagar", "Malleshwaram", "Marathahalli", "HSR Layout", 
@@ -31,5 +45,14 @@ def get_areas():
 
 @app.post("/predict")
 def get_prediction(data: InputData):
+    """
+    Endpoint to predict points based on the input data.
+    
+    Args:
+        data (InputData): Input data provided by the user (area, age, and housing status).
+    
+    Returns:
+        dict: A dictionary containing the predicted points.
+    """
     predicted_points = predict_points(data.area, data.age, data.is_housed)
     return {"predicted_points": predicted_points}
